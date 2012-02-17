@@ -136,9 +136,34 @@ def reloadComponent(game,dialog,node):
         
     #Components
     if node.nodeName=="jpanel":
-       reloadJPanel(game,dialog,node)
+        c = JPanel()
+        c.setBackground(Color.BLACK)
+        layout = createLayoutManager(c,node.getAttribute("layout") if node.hasAttribute("layout") else "flow")
+        c.setLayout(layout)
+        c.setOpaque(False)
+        
+        if node.getAttribute("opaque"):
+            c.setOpaque(node.getAttribute("opaque")=="true")
+        
+        if node.getAttribute("background"):
+            if(node.getAttribute("background")=="orange"):
+                c.setBackground(Color.ORANGE)
+            elif(node.getAttribute("background")=="green"):
+                c.setBackground(Color.GREEN)            
+            
+        for child in node.childNodes:
+            if child.nodeName!="#text":
+                if node.getAttribute("layout")=="gridbag":
+                    c.add(reloadComponent(game,dialog,child),getGridBagConstraints(game,child))
+                else:
+                    c.add(reloadComponent(game,dialog,child))
+                
     elif node.nodeName=="jlabel":
         c = JLabel(text,align)
+    elif node.nodeName=="jbutton":
+        c = JButton(text)
+        if node.hasAttribute("enabled"): c.setEnabled(node.getAttribute("enabled")=="true");
+            
     elif node.nodeName=="settingspanel":
         c = SettingsPanel(game)
         for g in node.childNodes:
@@ -167,11 +192,7 @@ def reloadComponent(game,dialog,node):
 
         c.finalizeLogsPanel()
         dialog.registerLogsPanel(int(node.getAttribute("id")),c)
-        
-        
-    elif node.nodeName=="jbutton":
-        reloadJButton(game,dialog,node,text,align)
-        
+    
     elif node.nodeName=="nglcanvas":
         c = NGLCanvas(game,int(getCascadingAttribute(game,node,"width")),int(getCascadingAttribute(game,node,"height")))
         dialog.registerCanvas(int(node.getAttribute("id")),c)
@@ -198,32 +219,6 @@ def reloadComponent(game,dialog,node):
 
     if node.nodeName!="nglcanvas" and node.nodeName!="jpanel" and node.nodeName!="settingspanel": addListeners(game,c,node)
     return c;
-
-def reloadJPanel(game,dialog,node):
-    c = JPanel()
-    c.setBackground(Color.BLACK)
-    layout = createLayoutManager(c,node.getAttribute("layout") if node.hasAttribute("layout") else "flow")
-    c.setLayout(layout)
-    c.setOpaque(False)
-    
-    if node.getAttribute("opaque"):
-        c.setOpaque(node.getAttribute("opaque")=="true")
-    
-    if node.getAttribute("background"):
-        if(node.getAttribute("background")=="orange"):
-            c.setBackground(Color.ORANGE)
-        elif(node.getAttribute("background")=="green"):
-            c.setBackground(Color.GREEN)            
-        
-    for child in node.childNodes:
-        if child.nodeName!="#text":
-            if node.getAttribute("layout")=="gridbag":
-                c.add(reloadComponent(game,dialog,child),getGridBagConstraints(game,child))
-            else:
-                c.add(reloadComponent(game,dialog,child))
-def reloadJButton(game,dialog,node):
-    c = JButton(text)
-    if node.hasAttribute("enabled"): c.setEnabled(node.getAttribute("enabled")=="true");
     
 def createLayoutManager(jpanel,sLayout):
     if sLayout=="absolute": return None

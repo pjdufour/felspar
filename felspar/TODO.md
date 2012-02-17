@@ -1,0 +1,1 @@
+Eclipse cannot build/compile java and python in the same project, so fork felspar (or have both in the same repo but under different folders).  Maybe "java" and "python".
