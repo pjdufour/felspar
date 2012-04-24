@@ -1,4 +1,4 @@
-Swing/JOGL GUI
+Jython Swing/JOGL GUI Loader
 ===
 
 ### Description
