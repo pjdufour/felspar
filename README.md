@@ -1,5 +1,4 @@
-### Felspar
-
+Felspar
 Jython Loader for [Coyote](https://github.com/pjdufour/coyote)
 ===
 
