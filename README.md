@@ -17,6 +17,7 @@ This loader can read in an xml file and convert the xml to Java Swing components
 
 Dependencies:
 
+- [coyote](https://github.com/pjdufour/coyote)
 - [tecolote](https://github.com/pjdufour/tecolote)
 - JOGL
 - Jython
