@@ -1,4 +1,4 @@
-Jython Loader for [Coyote](https://github.com/pjdufour/coyote)
+Felspar: Jython Loader for [Coyote](https://github.com/pjdufour/coyote)
 ===
 
 ### Description
