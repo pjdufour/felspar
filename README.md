@@ -1,9 +1,9 @@
-Jython Swing/JOGL GUI Loader
+Jython Swing/JOGL GUI Loader (compatible with [coyote](https://github.com/pjdufour/coyote))
 ===
 
 ### Description
 
-This loader can read in an xml file and convert the xml to Java Swing components (including GLCanvas).  Each dialog and GLCanvas specified are loaded on read; however, they are not "compiled".  Dialog, GLCanvas, and other components can be activated/deactivated programatically to save memory and cpu time.  Although targeted for use with the compatible GUI framework, the code can easily be distilled to just support Swing.
+This loader can read in an xml file and convert the xml to Java Swing components (including GLCanvas).  Although targeted for use with [coyote](https://github.com/pjdufour/coyote), the code can easily be distilled to just support Java Swing.
 
 ### Features
 
