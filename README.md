@@ -1,4 +1,4 @@
-Jython Swing/JOGL GUI Loader (compatible with [coyote](https://github.com/pjdufour/coyote))
+Jython Loader for [Coyote](https://github.com/pjdufour/coyote))
 ===
 
 ### Description
