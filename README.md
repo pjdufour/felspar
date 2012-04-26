@@ -13,7 +13,7 @@ This loader can read in an xml file and convert the xml to Java Swing components
 ### Example
 
 
-### To build
+### Building
 
 Dependencies:
 
